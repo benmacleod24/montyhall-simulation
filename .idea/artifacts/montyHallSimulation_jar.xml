@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="montyHallSimulation:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/montyHallSimulation_jar</output-path>
+    <root id="archive" name="montyHallSimulation.jar">
+      <element id="module-output" name="montyHallSimulation" />
+    </root>
+  </artifact>
+</component>

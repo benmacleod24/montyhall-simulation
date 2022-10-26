@@ -36,38 +36,30 @@ public class Main {
         }
 
         // Win Ratio
-        int numeratorReduced = numOfWins / 3;
-        int denominatorReduced = numOfSimulations / 3;
-        if (shouldSwitch) numeratorReduced = numOfWinSwitched / 3;
+        int numerator = numOfWins;
+        int denominator = numOfSimulations;
+        if (shouldSwitch) numerator = numOfWinSwitched;
+        int gcd = _GCD(numerator, denominator);
 
-        String fraction = reduce(numOfWins, numOfSimulations);
-        if (shouldSwitch) fraction = reduce(numOfWinSwitched, numOfSimulations);
+        // Complete reduction.
+        numerator = numerator / gcd;
+        denominator = denominator / gcd;
 
         // Win Percentage.
-        float averageWins = (((float) numeratorReduced) / ((float) denominatorReduced)) * 100;
+        float averageWins = (((float) numerator) / ((float) denominator)) * 100;
 
         // Display Results.
         System.out.println();
         System.out.println("Number of Wins (When Switched): " + numOfWinSwitched);
         System.out.println("Number of Wins (When NOT Switched): " + numOfWins);
         System.out.println("Win Percentage: " + Math.round(averageWins) + "%");
-        System.out.println("Ratio Wins: " + fraction);
+        System.out.println("Ratio Wins: " + numerator + "/" + denominator);
 
 
     }
 
     static  public int _GCD(int a, int b) {
         return b == 0 ? a : _GCD(b, a % b);
-    }
-
-    static public String reduce(int x, int y) {
-        int d;
-        d = _GCD(x,y);
-
-        x = x / d;
-        y = y / d;
-
-        return x + "/" + y;
     }
 
     static public boolean runSimulation(boolean shouldSwitch) {
